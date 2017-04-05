@@ -32,7 +32,8 @@ mlp.addLayer(layer2)
 for i in range(0,1):
     for j in mlp.layers[i].neurons:
         for l in mlp.layers[i + 1].neurons:
-            j.addOutput(l, random.uniform(0.1, 0.5))
+            j.addOutput(l)
+            l.addInput(j, random.uniform(0.1, 0.5))
 
 with open('testing_data.csv', newline='\n') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
