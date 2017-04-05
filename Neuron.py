@@ -1,3 +1,6 @@
+import math
+
+
 class Neuron:
 
     def __init__(self):
@@ -18,3 +21,16 @@ class Neuron:
 
     def removeInput(self, neuron):
         self.inputConnections.pop(neuron)
+
+    def computeWeightedSum(self):
+        for k, v in self.inputConnections.items():
+            self.weightedSum = self.weightedSum + k.outputValue * v
+
+    def computeOutputValue(self):
+        self.outputValue = (1 / (1 + math.pow(2.72, self.weightedSum)))
+
+    def computeDeltaParameter(self, expectedValue):
+        # when neuron is in last layer
+        self.deltaParameter = expectedValue - self.outputValue
+
+    #def updateWeight(self):

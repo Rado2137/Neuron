@@ -35,6 +35,15 @@ for i in range(0,1):
             j.addOutput(l)
             l.addInput(j, random.uniform(0.1, 0.5))
 
+mlp.layers[0].neurons[0].outputValue = 5.4
+mlp.layers[0].neurons[1].outputValue = 4.4
+mlp.layers[0].neurons[2].outputValue = 3.4
+mlp.layers[0].neurons[3].outputValue = 4.7
+
+mlp.layers[1].neurons[0].computeWeightedSum()
+mlp.layers[1].neurons[0].computeOutputValue()
+print(mlp.layers[1].neurons[0].outputValue)
+
 with open('testing_data.csv', newline='\n') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
