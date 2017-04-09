@@ -27,7 +27,8 @@ class Neuron:
             self.weightedSum = self.weightedSum + k.outputValue * v
 
     def computeOutputValue(self):
-        self.outputValue = (1 / (1 + math.pow(2.72, self.weightedSum)))
+        if (self.outputValue == 0):
+            self.outputValue = (1 / (1 + math.pow(2.72, self.weightedSum)))
 
     def computeDeltaParameter(self, expectedValue):
         # when neuron is in last layer
