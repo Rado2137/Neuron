@@ -32,8 +32,9 @@ mlp.addLayer(layer2)
 for i in range(0,1):
     for j in mlp.layers[i].neurons:
         for l in mlp.layers[i + 1].neurons:
-            j.addOutput(l)
-            l.addInput(j, random.uniform(0.1, 0.5))
+            w = random.uniform(0.1, 0.5)
+            j.addOutput(l, w)
+            l.addInput(j, w)
 
 mlp.layers[0].neurons[0].outputValue = 5.4
 mlp.layers[0].neurons[1].outputValue = 4.4

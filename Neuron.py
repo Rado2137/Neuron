@@ -8,13 +8,13 @@ class Neuron:
         self.deltaParameter = 0
         self.outputValue = 0
         self.inputConnections = dict()
-        self.outputConnections = []
+        self.outputConnections = dict()
 
-    def addOutput(self, neuron):
-        self.outputConnections.append(neuron)
+    def addOutput(self, neuron, weight):
+        self.outputConnections[neuron] = weight
 
     def removeOutput(self, neuron):
-        self.outputConnections.remove(neuron)
+        self.outputConnections.pop(neuron)
 
     def addInput(self, neuron, weight):
         self.inputConnections[neuron] = weight
@@ -31,6 +31,13 @@ class Neuron:
 
     def computeDeltaParameter(self, expectedValue):
         # when neuron is in last layer
-        self.deltaParameter = expectedValue - self.outputValue
+        if (self.outputConnections.__len__() == 0):
+            self.deltaParameter = expectedValue - self.outputValue
+        else:
+            for k, v in self.outputConnections.items():
+                self.deltaParameter = self.deltaParameter + k.deltaParameter * v * (1 - k.outputValue) * k.outputValue
 
-    #def updateWeight(self):
+    def updateWeight(self, learningRate):
+        for k, v in self.outputConnections.items():
+            #???????
+            self.outputConnections[k] = v - learningRate * k.deltaParameter * (1 - k.outputValue) * k.outputValue * self.outputValue
