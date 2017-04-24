@@ -25,4 +25,6 @@ class MLP:
             for j in self.layers[i].neurons:
                 # dummy parameter
                 j.computeDeltaParameter(None)
+            for j in self.layers[i].neurons:
+                #TODO not sure
                 j.updateWeight(learningRate)

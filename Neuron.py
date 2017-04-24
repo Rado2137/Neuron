@@ -1,7 +1,8 @@
 import math
 
-
 class Neuron:
+
+    recognised = 0
 
     def __init__(self):
         self.weightedSum = 0
@@ -34,11 +35,13 @@ class Neuron:
         # when neuron is in last layer
         if (self.outputConnections.__len__() == 0):
             self.deltaParameter = expectedValue - self.outputValue
+            if (math.fabs(self.deltaParameter) < 0.1):
+                Neuron.recognised = Neuron.recognised + 1
         else:
             for k, v in self.outputConnections.items():
                 self.deltaParameter = self.deltaParameter + k.deltaParameter * v * (1 - k.outputValue) * k.outputValue
 
     def updateWeight(self, learningRate):
         for k, v in self.outputConnections.items():
-            #???????
             self.outputConnections[k] = v - learningRate * k.deltaParameter * (1 - k.outputValue) * k.outputValue * self.outputValue
+            k.inputConnections[self] = self.outputConnections[k]
