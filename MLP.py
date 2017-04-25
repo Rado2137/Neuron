@@ -20,8 +20,12 @@ class MLP:
                 j.computeWeightedSum()
                 j.computeOutputValue()
 
+        recognised = 0
         for i in range(0, self.layers[self.layers.__len__() - 1].getNeurons().__len__()):
-            self.layers[self.layers.__len__() - 1].getNeurons()[i].computeDeltaParameter(expectedValues[i])
+            recognised += self.layers[self.layers.__len__() - 1].getNeurons()[i].computeDeltaParameter(expectedValues[i])
+
+        if (recognised == 3):
+            MLP.recognised += 1
 
         for i in range(0, self.layers[self.layers.__len__() - 1].getNeurons().__len__()):
             self.layers[self.layers.__len__() - 1].getNeurons()[i].updateWeight(learningRate)

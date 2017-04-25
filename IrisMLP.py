@@ -46,10 +46,11 @@ for i in range(0, 3):
             j.addOutput(l, w)
             l.addInput(j, w)
 
-def test():
+def test(iteration):
     with open('testing_data.csv', newline='\n') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         Neuron.recognised = 0
+        MLP.recognised = 0
         for row in spamreader:
             i = 0;
             for input in mlp.getLayers()[0].getNeurons():
@@ -63,14 +64,14 @@ def test():
             else:
                 expectedValues = [0, 0, 1]
 
+            #mlp.backPropagation(0.5, expectedValues)
             mlp.backPropagation(0.2, expectedValues)
 
-    print((Neuron.recognised / 3) / 1.50)
+    print("Test number: " + iteration.__str__() + ".")
+    print("Partial effectiveness in %: ")
+    print(Neuron.recognised / 3 / 1.50)
+    print("Full effectiveness in %: ")
+    print(MLP.recognised / 1.50)
 
-test()
-test()
-test()
-test()
-test()
-test()
-test()
+for i in range(1, 8):
+    test(i)

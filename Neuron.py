@@ -34,13 +34,17 @@ class Neuron:
     def computeDeltaParameter(self, expectedValue):
         # when neuron is in last layer
         if (self.outputConnections.__len__() == 0):
-            self.deltaParameter = expectedValue - self.outputValue
+            self.deltaParameter = (expectedValue - self.outputValue) * self.outputValue * (1.0 - self.outputValue)
             if (math.fabs(self.deltaParameter) < 0.1):
-                Neuron.recognised = Neuron.recognised + 1
+                Neuron.recognised += 1
+                return 1
+            else:
+                return 0
         else:
             self.deltaParameter = 0
             for k, v in self.outputConnections.items():
                 self.deltaParameter = self.deltaParameter + k.deltaParameter * v * (1 - k.outputValue) * k.outputValue
+            return -1
 
     def updateWeight(self, learningRate):
         for k, v in self.outputConnections.items():
