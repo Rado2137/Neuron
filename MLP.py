@@ -1,6 +1,9 @@
 class MLP:
 
-    layers = []
+    recognised = 0
+
+    def __init__(self):
+        self.layers = []
 
     def addLayer(self, layer):
         self.layers.append(layer)
@@ -18,7 +21,6 @@ class MLP:
                 j.computeOutputValue()
 
         for i in range(0, self.layers[self.layers.__len__() - 1].getNeurons().__len__()):
-            self.layers[self.layers.__len__() - 1].getNeurons()
             self.layers[self.layers.__len__() - 1].getNeurons()[i].computeDeltaParameter(expectedValues[i])
 
         for i in range(self.layers.__len__() - 2, -1, -1):
