@@ -29,8 +29,7 @@ class Neuron:
             self.weightedSum = self.weightedSum + k.outputValue * v
 
     def computeOutputValue(self):
-        #if (self.outputValue == 0):
-        self.outputValue = (1.0 / (1.0 + math.pow(2.72, (-self.weightedSum))))
+        self.outputValue = (1.0 / (1.0 + math.exp(-self.weightedSum)))
 
     def computeDeltaParameter(self, expectedValue):
         # when neuron is in last layer
@@ -38,10 +37,6 @@ class Neuron:
             self.deltaParameter = expectedValue - self.outputValue
             if (math.fabs(self.deltaParameter) < 0.1):
                 Neuron.recognised = Neuron.recognised + 1
-            # else:
-            #     print(expectedValue)
-            #     print(self.outputValue)
-            #     print(self.deltaParameter)
         else:
             self.deltaParameter = 0
             for k, v in self.outputConnections.items():

@@ -41,8 +41,8 @@ mlp.addLayer(layer3)
 for i in range(0, 3):
     for j in mlp.layers[i].neurons:
         for l in mlp.layers[i + 1].neurons:
-            w = random.uniform(-0.5, 0.5)
-            #w = random.uniform(0.0, 1.0)
+            #w = random.uniform(-5.0, 5.0)
+            w = random.uniform(-0.1, 0.1)
             j.addOutput(l, w)
             l.addInput(j, w)
 
@@ -63,7 +63,7 @@ def test():
             else:
                 expectedValues = [0, 0, 1]
 
-            mlp.backPropagation(0.1, expectedValues)
+            mlp.backPropagation(0.2, expectedValues)
 
     print((Neuron.recognised / 3) / 1.50)
 
