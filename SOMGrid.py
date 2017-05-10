@@ -18,7 +18,6 @@ class SOMGrid:
         radius = self.startingRadius * math.exp(- iteration / self.narrowing)
         learningRate = self.initLearningRate * math.exp(- iteration / self.narrowing)
 
-        #TODO it needs to be computed only once
         for i in range(self.height):
             for j in range(self.width):
                 self.matrix[i][j].computeDistance()
