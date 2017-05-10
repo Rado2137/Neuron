@@ -52,10 +52,10 @@ def test(iteration):
         Neuron.recognised = 0
         MLP.recognised = 0
         for row in spamreader:
-            i = 0;
+            i = 0
             for input in mlp.getLayers()[0].getNeurons():
                 input.outputValue = float(row[i])
-                i = i + 1;
+                i = i + 1
                 expectedValues = []
             if (row[4] == "Iris-setosa"):
                 expectedValues = [1, 0, 0]

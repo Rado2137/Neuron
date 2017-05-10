@@ -12,15 +12,7 @@ class SOMGrid:
         self.narrowing = 1000
         self.initLearningRate = initLearningRate
         self.matrix = [[SOMNeuron() for x in range(width)] for y in range(height)]
-
-    def chooseWinner(self):
-        #TODO to delete
-        winnerCoords = (0, 0)
-        for i in range(self.height):
-            for j in range(self.width):
-                if self.matrix[i][j].distance < self.matrix[winnerCoords[0]][winnerCoords[1]].distance:
-                    winnerCoords = (i, j)
-        winnerCoords
+        self.neurons = []
 
     def doLearnStep(self, iteration):
         radius = self.startingRadius * math.exp(- iteration / self.narrowing)

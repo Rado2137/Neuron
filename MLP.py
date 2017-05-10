@@ -32,7 +32,6 @@ class MLP:
 
         for i in range(self.layers.__len__() - 2, -1, -1):
             for j in self.layers[i].neurons:
-                #TODO not sure
                 j.updateWeight(learningRate)
             for j in self.layers[i].neurons:
                 # dummy parameter
