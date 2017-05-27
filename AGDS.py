@@ -1,4 +1,4 @@
-from sortedcontainers import SortedList, SortedSet, SortedDict
+from sortedcontainers import SortedDict
 
 from Neuron import Neuron
 
@@ -33,3 +33,8 @@ class AGDS:
             # updating occurence weigths
             for k1, v1 in self.paramLayers[k][v].outputConnections.items():
                 self.paramLayers[k][v].outputConnections[k1] = 1 / self.paramLayers[k][v].outputConnections.__len__()
+
+    def associativeInference(self, param, index):
+        self.paramLayers[param][index].weightedSum = 1 # weightedSum used for similarity value
+        for neuron in self.paramLayers[param][index].outputConnections:
+            neuron.weightedSum = 1
