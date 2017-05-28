@@ -39,3 +39,11 @@ class AGDS:
         for neuron in self.paramLayers[param][self.paramLayers[param].keys().__getitem__(index)].outputConnections:
             neuron.similarity = 1
             neuron.computeSimilarity(self)
+
+        comparedNode = self.paramLayers[param][self.paramLayers[param].keys().__getitem__(index)]
+        similarityWeight = 1 / (self.paramLayers.__len__() - 1)
+        for node in self.paramLayers[param].values():
+            if node != comparedNode:
+                for attribute in node.outputConnections.keys():
+                    node.similarity += similarityWeight * attribute.similarity
+
