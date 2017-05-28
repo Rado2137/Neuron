@@ -25,7 +25,7 @@ with open('testing_data.csv', newline='\n') as csvfile:
 
     agds.initWeights("sle", "swi", "ple", "pwi")
 
-print(agds.paramLayers)
-
 # finding similarity to R93
-agds.associativeInference("class", 92)
+agds.associativeInference("object", 92)
+
+print(agds.paramLayers)

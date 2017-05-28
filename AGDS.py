@@ -27,7 +27,7 @@ class AGDS:
     def addObject(self, index, classes):
         object = Neuron()
         for k, v in classes.items():
-            self.paramLayers[k][v].addOutput(object, 1 / self.paramLayers[k][v].outputConnections.__len__())
+            self.paramLayers[k][v].addOutput(object, 1 / (self.paramLayers[k][v].outputConnections.__len__() + 1))
             object.addOutput(self.paramLayers[k][v], 1)
             self.paramLayers["object"][index] = object
             # updating occurence weigths
@@ -35,6 +35,7 @@ class AGDS:
                 self.paramLayers[k][v].outputConnections[k1] = 1 / self.paramLayers[k][v].outputConnections.__len__()
 
     def associativeInference(self, param, index):
-        self.paramLayers[param][index].weightedSum = 1 # weightedSum used for similarity value
-        for neuron in self.paramLayers[param][index].outputConnections:
-            neuron.weightedSum = 1
+        self.paramLayers[param][self.paramLayers[param].keys().__getitem__(index)].similarity = 1
+        for neuron in self.paramLayers[param][self.paramLayers[param].keys().__getitem__(index)].outputConnections:
+            neuron.similarity = 1
+            neuron.computeSimilarity(self)

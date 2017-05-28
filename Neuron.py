@@ -8,6 +8,7 @@ class Neuron:
         self.weightedSum = 0
         self.deltaParameter = 0
         self.outputValue = 0
+        self.similarity = 0
         self.inputConnections = dict()
         self.outputConnections = dict()
 
@@ -50,3 +51,10 @@ class Neuron:
         for k, v in self.outputConnections.items():
             self.outputConnections[k] = v - learningRate * k.deltaParameter * (1 - k.outputValue) * k.outputValue * self.outputValue
             k.inputConnections[self] = self.outputConnections[k]
+
+    def computeSimilarity(self, neuron):
+        if self.similarity != 1:
+            self.similarity = neuron.similarity * self.inputConnections[neuron]
+        for node in self.inputConnections.keys():
+            if node != neuron:
+                node.computeSimilarity(self)
