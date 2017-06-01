@@ -1,6 +1,6 @@
 import math
 
-from Neuron import Neuron
+from model.Neuron import Neuron
 
 
 class SOMNeuron(Neuron):

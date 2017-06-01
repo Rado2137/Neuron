@@ -1,6 +1,6 @@
 from sortedcontainers import SortedDict
 
-from Neuron import Neuron
+from model.Neuron import Neuron
 
 
 class AGDS:

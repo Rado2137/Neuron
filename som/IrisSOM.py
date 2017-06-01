@@ -1,10 +1,10 @@
-import random
 import csv
+import random
 
-from Layer import Layer
-from MLP import MLP
-from Neuron import Neuron
-from SOMGrid import SOMGrid
+from mlp import MLP
+from model.Layer import Layer
+from model.Neuron import Neuron
+from som.SOMGrid import SOMGrid
 
 grid = SOMGrid(4, 4, 1)
 

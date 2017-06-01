@@ -1,6 +1,7 @@
 import unittest
 
-from Neuron import Neuron
+from model.Neuron import Neuron
+
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):

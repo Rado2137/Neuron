@@ -1,9 +1,9 @@
 import csv
 import random
 
-from Layer import Layer
-from MLP import MLP
-from Neuron import Neuron
+from mlp import MLP
+from model.Layer import Layer
+from model.Neuron import Neuron
 
 global mlp
 mlp = MLP()

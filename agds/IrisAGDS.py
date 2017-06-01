@@ -1,7 +1,6 @@
 import csv
 
-from AGDS import AGDS
-
+from agds.AGDS import AGDS
 
 agds = AGDS()
 agds.addParam("sle")

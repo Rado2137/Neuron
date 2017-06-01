@@ -1,6 +1,6 @@
 import math
 
-from SOMNeuron import SOMNeuron
+from som.SOMNeuron import SOMNeuron
 
 
 class SOMGrid:
