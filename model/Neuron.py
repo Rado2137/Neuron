@@ -11,6 +11,7 @@ class Neuron:
         self.similarity = 0
         self.inputConnections = dict()
         self.outputConnections = dict()
+        self.name = ""
 
     def addOutput(self, neuron, weight):
         self.outputConnections[neuron] = weight

@@ -1,6 +1,7 @@
 import csv
 
 from agds.AGDS import AGDS
+from visualization.Visualization import Visualization
 
 agds = AGDS()
 agds.addParam("sle")
@@ -10,7 +11,7 @@ agds.addParam("pwi")
 agds.addParam("class")
 agds.addParam("object")
 
-with open('testing_data.csv', newline='\n') as csvfile:
+with open('../testing_data.csv', newline='\n') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     i = 0
     for row in spamreader:
@@ -27,5 +28,7 @@ with open('testing_data.csv', newline='\n') as csvfile:
 # finding similarity to R93
 agds.associativeInference("object", 92)
 
-for item in agds.paramLayers["object"].values():
-    print(item.similarity)
+# for item in agds.paramLayers["object"].values():
+#     print(item.similarity)
+
+agds.inferenceVisualization()
