@@ -12,6 +12,7 @@ class Neuron:
         self.inputConnections = dict()
         self.outputConnections = dict()
         self.name = ""
+        self.classOfNeuron = ""
 
     def addOutput(self, neuron, weight):
         self.outputConnections[neuron] = weight

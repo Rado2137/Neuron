@@ -21,10 +21,11 @@ class AGDS:
         if not self.paramLayers[param].__contains__(value):
             neuron = Neuron()
             neuron.outputValue = value
+            neuron.classOfNeuron = param
             self.paramLayers[param][value] = neuron
 
-            self.v.addNode(value)
-            self.v.addEdge(param, value)
+            self.v.addNode(str(value) + " - " + neuron.classOfNeuron)
+            self.v.addEdge(param, str(value) + " - " + neuron.classOfNeuron)
 
     def initWeights(self, *args):
         for param in args:
@@ -61,14 +62,16 @@ class AGDS:
 
     def inferenceVisualization(self):
         previous = None
+        self.v.addNode("object")
         for node in self.paramLayers["object"].values():
             node.name += " " + str(round(node.similarity, 2))
             self.v.addNode(node.name)
+            self.v.addEdge("object", node.name)
             if previous is not None:
                 self.v.addEdge(previous.name, node.name)
             previous = node
 
             for param in node.outputConnections.keys():
-                self.v.addEdge(node.name, param.outputValue)
+                self.v.addEdge(node.name, str(param.outputValue) + " - " + param.classOfNeuron)
 
         self.v.draw()

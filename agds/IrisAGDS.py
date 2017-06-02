@@ -27,6 +27,7 @@ with open('../testing_data.csv', newline='\n') as csvfile:
 
 # finding similarity to R93
 agds.associativeInference("object", 92)
+#agds.associativeInference("object", 7)
 
 # for item in agds.paramLayers["object"].values():
 #     print(item.similarity)
