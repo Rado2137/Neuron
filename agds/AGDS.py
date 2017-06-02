@@ -62,11 +62,9 @@ class AGDS:
 
     def inferenceVisualization(self):
         previous = None
-        self.v.addNode("object")
         for node in self.paramLayers["object"].values():
             node.name += " " + str(round(node.similarity, 2))
             self.v.addNode(node.name)
-            self.v.addEdge("object", node.name)
             if previous is not None:
                 self.v.addEdge(previous.name, node.name)
             previous = node
