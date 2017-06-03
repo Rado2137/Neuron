@@ -21,5 +21,5 @@ class Visualization:
         # pos = nx.spring_layout(self.G, scale=20000)
         #
         # nx.draw_networkx(self.G, pos)
-        nx.write_gml(self.G, path="graph.gml")
+        nx.write_gml(self.G, path="../graph.gml")
         # plt.show()
