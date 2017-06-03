@@ -1,7 +1,7 @@
 from sortedcontainers import SortedDict
 import networkx as nx
 from model.Neuron import Neuron
-from visualization.Visualization import Visualization
+from utils.Visualization import Visualization
 
 
 class AGDS:
