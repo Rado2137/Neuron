@@ -1,6 +1,4 @@
 import csv
-import random
-
 import numpy as np
 
 from agds.AGDS import AGDS
@@ -16,7 +14,7 @@ agds.addParam("object")
 
 Matrix = []
 
-with open('../testing_data.csv', newline='\n') as csvfile:
+with open('testing_data.csv', newline='\n') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     i = 0
     for row in spamreader:
@@ -35,13 +33,17 @@ with open('../testing_data.csv', newline='\n') as csvfile:
 
 # finding similarity to R93
 agds.associativeInference("object", 92)
-#agds.associativeInference("object", 7)
 
-# for item in agds.paramLayers["object"].values():
-#     print(item.similarity)
+print("Objects similarities: ")
+for item in agds.paramLayers["object"].values():
+   print(item.similarity)
 
 agds.inferenceVisualization()
 X = np.array([(Matrix[i][0], Matrix[i][1], Matrix[i][2], Matrix[i][3]) for i in range(150)])
 
+result = utils.Clustering.find_centers(list(X), 3)
 
-utils.Clustering.find_centers(list(X), 3)
+for key, cluster in result[1].items():
+    print("Cluster " + str(key + 1))
+    print("Number of elements in cluster " + str(cluster.__len__()))
+    matches = dict()

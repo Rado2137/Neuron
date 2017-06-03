@@ -1,6 +1,6 @@
 import random
 import numpy as np
-
+import sklearn.cluster as c
 
 def cluster_points(X, mu):
     clusters = {}
@@ -37,3 +37,35 @@ def find_centers(X, K):
         # Reevaluate centers
         mu = reevaluate_centers(oldmu, clusters)
     return mu, clusters
+
+def spectral(X):
+    cluster = c.SpectralClustering(n_clusters=7)
+    return cluster.fit(X)
+
+def kmeans(X):
+    cluster = c.KMeans(n_clusters=7)
+    return cluster.fit(X)
+
+def affinity(X):
+    cluster = c.AffinityPropagation()
+    return cluster.fit(X)
+
+def agglomerative(X):
+    cluster = c.AgglomerativeClustering(n_clusters=7)
+    return cluster.fit(X)
+
+def birch(X):
+    cluster = c.Birch(n_clusters=7)
+    return cluster.fit(X)
+
+def DBSCAN(X):
+    cluster = c.DBSCAN()
+    return cluster.fit(X)
+
+def miniBatchKMeans(X):
+    cluster = c.MiniBatchKMeans(n_clusters=7)
+    return cluster.fit(X)
+
+def meanShift(X):
+    cluster = c.MeanShift()
+    return cluster.fit(X)
