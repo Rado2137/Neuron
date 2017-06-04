@@ -1,7 +1,7 @@
 import csv
 import random
 
-from mlp import MLP
+from mlp.MLP import MLP
 from model.Layer import Layer
 from model.Neuron import Neuron
 from som.SOMGrid import SOMGrid
